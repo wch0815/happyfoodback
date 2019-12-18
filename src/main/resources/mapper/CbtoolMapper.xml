@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdg.dao.ICbtoolDao">
+
+    <!-- 获取所有 -->
+    <select id="getAllCbtool" resultType="Cbtool">
+        select * from tb_cbtool
+    </select>
+
+    <!-- 增加 -->
+    <insert id="sarvCbtool">
+        insert into tb_cbtool value (null,#{tools})
+    </insert>
+
+    <!-- 更改 -->
+    <insert id="updateCbtool">
+        update tb_cbtool set tools=#{tools} where cbtoid=#{cbtoid}
+    </insert>
+
+    <!-- 删除 -->
+    <delete id="deleteCbtoolByCbtoid">
+        delete from tb_cbtool where cbtoid=#{cbtoid}
+    </delete>
+
+</mapper>

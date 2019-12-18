@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://148.70.25.17:3306/happyfood?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password:
+  thymeleaf:
+    cache: false        #开发时关闭缓存，不然看不到实时的页面效果
+    mode: LEGACYHTML5   #使用非严格的HTML标准
+    encoding: UTF-8     #页面的编码方式
+mybatis:
+  type-aliases-package: com.wdg.pojo
+  mapper-locations: classpath:mapper/*.xml
