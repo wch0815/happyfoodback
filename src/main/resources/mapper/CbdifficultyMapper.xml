@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdg.dao.ICbdifficultyDao">
+    <select id="getAllCbdifficulty" resultType="Cbdifficulty">
+        select * from tb_cbdifficulty
+    </select>
+
+    <insert id="saveCbdifficulty">
+        insert into tb_cbdifficulty values (null,#{difficulty})
+    </insert>
+
+    <update id="updateCbdifficulty">
+        update tb_cbdifficulty set difficulty=#{difficulty} where cbdid=#{cbdid}
+    </update>
+
+    <delete id="deleteCbdifficultyByUid">
+        delete from tb_cbdifficulty where cbdid=#{cbdid}
+    </delete>
+</mapper>

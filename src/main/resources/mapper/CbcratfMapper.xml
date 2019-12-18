@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdg.dao.ICbcratfDao">
+    <select id="getAllCbcratf" resultType="cbcratf">
+        select * from tb_cbcratf
+    </select>
+
+    <insert id="saveCbcratf">
+        insert into tb_cbcratf values (null ,#{cratf})
+    </insert>
+
+    <update id="updateCbcratf">
+        update tb_cbcratf set cratf=#{cratf} where cbcid=#{cbcid}
+    </update>
+
+    <delete id="deleteCbcratfByUid">
+        delete from tb_cbcratf where cbcid=#{cbcid}
+    </delete>
+</mapper>
