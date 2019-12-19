@@ -10,5 +10,5 @@ public class Food {
 
     private String fid;
     private String ftid; // 食物的一级分类
-    private String name;
+    private String nameFood;
 }

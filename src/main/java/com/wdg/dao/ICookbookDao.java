@@ -1,7 +1,6 @@
 package com.wdg.dao;
 
-import com.wdg.pojo.Cookbook;
-import com.wdg.pojo.Foodstatus;
+import com.wdg.pojo.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -12,8 +11,17 @@ public interface ICookbookDao {
 
     List<Cookbook> getAllCookbook(Map<String, Integer> map);
 
-    List<Cookbook> getAllCookbookOfAllByCbid(String cbid);
+    Cookbook getAllCookbookOfAllByCbid(String cbid);
 
-    int updateFoodstatus(Foodstatus foodstatus);
+    int updateFoodstatus(String cbid);
 
+    List<Cbmain> getMain(String cbid);
+
+    List<Cbtrim> getTrim(String cbid);
+
+    List<Food> getAllFood();
+
+    int saveClassify(Map<String,String> map);
+
+    int getNum();
 }

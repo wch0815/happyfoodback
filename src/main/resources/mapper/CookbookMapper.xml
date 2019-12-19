@@ -27,19 +27,19 @@
 		</association>
 		<association property="user" column="uid" javaType="User" autoMapping="true">
 		</association>
-		<!--<association property="cbtime" column="cbtid" javaType="Cbtime" autoMapping="true">-->
-		<!--</association>-->
-		<!--<association property="cbdifficulty" column="cbdid" javaType="Cbdifficulty" autoMapping="true">-->
-		<!--</association>-->
-		<!--<association property="cbcratf" column="cbcid" javaType="Cbcratf" autoMapping="true">-->
-		<!--</association>-->
-		<!--<association property="cbtaste" column="cbtaid" javaType="Cbtaste" autoMapping="true">-->
-		<!--</association>-->
-		<!--<collection property="cbtoolList" column="cbtoid" ofType="Cbtool" autoMapping="true">-->
-		<!--</collection>-->
+		<association property="cbtime" column="cbtid" javaType="Cbtime" autoMapping="true">
+		</association>
+		<association property="cbdifficulty" column="cbdid" javaType="Cbdifficulty" autoMapping="true">
+		</association>
+		<association property="cbcratf" column="cbcid" javaType="Cbcratf" autoMapping="true">
+		</association>
+		<association property="cbtaste" column="cbtaid" javaType="Cbtaste" autoMapping="true">
+		</association>
+		<collection property="cbtoolList" column="cbtoid" ofType="Cbtool" autoMapping="true">
+		</collection>
 
-		<!--<collection property="detailsList" column="cbdid" ofType="Details" autoMapping="true">-->
-		<!--</collection>-->
+		<collection property="detailsList" column="cbdid" ofType="Details" autoMapping="true">
+		</collection>
 	</resultMap>
 
     <select id="getAllCookbookOfAllByCbid" resultMap="cookbookMap">
@@ -53,7 +53,6 @@
 				tb_cbcratf cc,
 				tb_cb_tool tool,
 				tb_cbtool cbt,
-
 				tb_details dt,
 				tb_foodstatus fs
 		WHERE c.cbtid=t.cbtid
@@ -63,17 +62,42 @@
 				AND c.cbcid=cc.cbcid
 				AND c.cbid=tool.cbid
 				AND tool.cbtoid=cbt.cbtoid
-
 				AND c.cbid=dt.cbid
 				AND c.cbid=fs.cbid
 				AND c.cbid=#{cbid}
 				;
     </select>
 
+	<select id="getMain" resultType="Cbmain">
+		select * from tb_main where cbid=#{cbid}
+	</select>
+
+	<select id="getTrim" resultType="Cbtrim">
+		select * from tb_cbtrim where cbid=#{cbid}
+	</select>
+
     <update id="updateFoodstatus">
-        update tb_foodstatus set status=#{status} where cbid=#{cbid}
+        update tb_foodstatus set status=1 where cbid=#{cbid}
     </update>
 
+	<!--<resultMap id="foodMap" type="Foodtitle" autoMapping="true">-->
+		<!--<id property="ftid" column="ftid"/>-->
+		<!--<result property="nametitle" column="fname"/>-->
+		<!--<collection property="foods" ofType="Food" autoMapping="true">-->
+			<!--<result property="nameFood" column="name"/>-->
+		<!--</collection>-->
+	<!--</resultMap>-->
+	<select id="getAllFood" resultType="Food">
+		SELECT fid,name nameFood from tb_food
+	</select>
+
+	<insert id="saveClassify">
+		insert into tb_sort values (#{fid},#{cbid})
+	</insert>
+
+	<select id="getNum" resultType="Integer">
+		select count(1) from  tb_cookbook
+	</select>
     <!--<delete id="deleteUserByUid">-->
     <!--delete from tb_user where uid=#{uid}-->
     <!--</delete>-->

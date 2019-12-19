@@ -1,8 +1,7 @@
 package com.wdg.service.impl;
 
 import com.wdg.dao.ICookbookDao;
-import com.wdg.pojo.Cookbook;
-import com.wdg.pojo.Foodstatus;
+import com.wdg.pojo.*;
 import com.wdg.service.ICookbookService;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +21,38 @@ public class CookbookServiceImpl implements ICookbookService {
     }
 
     @Override
-    public List<Cookbook> getAllCookbookOfAllByCbid(String cbid) {
+    public Cookbook getAllCookbookOfAllByCbid(String cbid) {
         return cookbookDao.getAllCookbookOfAllByCbid(cbid);
     }
 
     @Override
-    public boolean updateFoodstatus(Foodstatus foodstatus) {
-        return cookbookDao.updateFoodstatus(foodstatus) > 0;
+    public boolean updateFoodstatus(String cbid) {
+        return cookbookDao.updateFoodstatus(cbid) > 0;
     }
+
+    @Override
+    public List<Cbmain> getMain(String cbid) {
+        return cookbookDao.getMain(cbid);
+    }
+
+    @Override
+    public List<Cbtrim> getTrim(String cbid) {
+        return cookbookDao.getTrim(cbid);
+    }
+
+    @Override
+    public List<Food> getAllFood() {
+        return cookbookDao.getAllFood();
+    }
+
+    @Override
+    public boolean saveClassify(Map<String,String> map) {
+        return cookbookDao.saveClassify(map) > 0;
+    }
+
+    @Override
+    public int getNum() {
+        return cookbookDao.getNum();
+    }
+
 }
