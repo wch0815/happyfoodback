@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdg.dao.ITodayRecommendDao">
+
+    <!-- 获取所有 -->
+    <select id="getAllTodayRecommend" resultType="TodayRecommend">
+        select * from tb_today_recommend
+    </select>
+
+    <!-- 增 -->
+    <insert id="saveTodayRecommend">
+        insert into tb_today_recommend value (null,#{cbid})
+    </insert>
+
+    <!-- 改 -->
+    <insert id="updateTodayRecommend">
+        update tb_today_recommend set cbid=#{cbid} where rid=#{rid}
+    </insert>
+
+    <!-- 删 -->
+    <delete id="deleteTodayRecommendByRid">
+        delete from tb_today_recommend where rid=#{rid}
+    </delete>
+
+</mapper>

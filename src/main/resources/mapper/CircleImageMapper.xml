@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdg.dao.ICircleImageDao">
+    
+    <!-- 获取所有 -->
+    <select id="getAllCircleImage" resultType="CircleImage">
+        select * from tb_circle_image
+    </select>
+
+    <!-- 增 -->
+    <insert id="saveCircleImage">
+        insert into tb_circle_image value (null,#{cbid})
+    </insert>
+
+    <!-- 改 -->
+    <insert id="updateCircleImage">
+        update tb_circle_image set cbid=#{cbid} where cid=#{cid}
+    </insert>
+
+    <!-- 删 -->
+    <delete id="deleteCircleImageByCid">
+        delete from tb_circle_image where cid=#{cid}
+    </delete>
+
+</mapper>
